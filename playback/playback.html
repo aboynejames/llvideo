@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>OpenSportProject.org  LL video demo</title>
+<!--<link rel="stylesheet" href="vendorstyle.css" />-->
+<link rel="stylesheet" href="style.css" />
+<script src="js/jquery-1.7.2.min.js"></script>
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script src="js/menucontrol.js"></script>
+<!--[if lt IE 9]>
+<script>
+$(document).ready(function() {
+	$('.control').hide();
+	$('.loading').fadeOut(500);
+	$('.caption').fadeOut(500);
+});
+</script>
+<![endif]-->
+</head>
+
+<body>
+<!-- Header -->
+<header>
+
+</header>
+
+<!-- Content -->
+<section id="wrapper">
+
+	<!-- Title -->
+	<h2>OpenSportProject.org video demo</h2>
+	<h3>view realtime, slowmotion, analytics</h3>
+
+<div class="videoContainer">
+	
+	<video id="myVideo" controls preload="auto" poster="poster.jpg" width="1000" height="650" >
+		<source src="swimview.mp4" type="video/mp4" />
+		<source src="swimview.ogg" type="video/ogg" />
+
+	  <p>Your browser does not support the video tag.</p>
+	</video>
+	<div class="caption">This is HTML5 video with custom controls</div>
+	<div class="control">
+		<div class="progress">
+			<span class="bufferBar"></span>
+			<span class="timeBar"></span>
+		</div>
+		
+		<div class="btmControl">
+			
+			<div class="mainControl">
+				<a class="btnStop lvl3 btnmain" href="#" tabindex="0" title="Stop play"></a>
+				<a class="btnBck lvl2 btnmain" href="#" tabindex="0" title="Rewind"></a>
+				<a class="btnPlay lvl1 btnmain" href="#" tabindex="0" title="Play/Pause video"></a>
+				<a class="btnFwd lvl2 btnmain" href="#" tabindex="0" title="Fast forward"></a>
+				<a class="btnEnd lvl3 btnmain" href="#" tabindex="0" title="End video"></a>
+			</div>	
+
+			<div class="volume">
+				<div class="sound" title="Mute/Unmute sound"></div>
+				<span class="volumeCover" title="Set volume"></span>
+				<span class="volumeBar"></span>
+			</div>
+		</div>
+		
+	</div>
+	<div class="loading"></div>
+</div>
+
+</section>
+
+<!-- Footer -->
+<footer>
+
+</footer>
+</body>
+</html>

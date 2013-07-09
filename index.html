@@ -1,0 +1,66 @@
+<html>
+<head></head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="js/menucontrol.js"></script>
+<script src="http://localhost:8850/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect('http://localhost');
+ //console.log(socket);
+  socket.on('hide', function(data){
+  //console.log(data);
+  	//$(data.div).slideUp();
+	$(data.div).append('new conetnt to show yes');
+  });
+</script>
+<body>
+ 
+	<div id="hide_me">Hello</div>
+	
+	<a href="" id="startvlc" >Start vlc video</a>
+	<a href="" id="recordvlc" >Record 20000</a>
+	<a href="" id="convertvlc" >Convert vlc file</a>
+	
+	<div id="news"></div>
+ 
+ 
+ <!-- Content -->
+<section id="wrapper">
+
+<div class="videoContainer">
+	
+	<video id="myVideo" controls preload="auto" poster="poster.jpg" width="1000" height="650" >
+		<source src="cromarfestsessionv1.mp4" type="video/mp4" />
+	  <p>Your browser does not support the video tag.</p>
+	</video>
+	<div class="caption">This is HTML5 video with custom controls</div>
+	<div class="control">
+		<div class="progress">
+			<span class="bufferBar"></span>
+			<span class="timeBar"></span>
+		</div>
+		
+		<div class="btmControl">
+			
+			<div class="mainControl">
+				<a class="btnStop lvl3 btnmain" href="#" tabindex="0" title="Stop play"></a>
+				<a class="btnBck lvl2 btnmain" href="#" tabindex="0" title="Rewind"></a>
+				<a class="btnPlay lvl1 btnmain" href="#" tabindex="0" title="Play/Pause video"></a>
+				<a class="btnFwd lvl2 btnmain" href="#" tabindex="0" title="Fast forward"></a>
+				<a class="btnEnd lvl3 btnmain" href="#" tabindex="0" title="End video"></a>
+			</div>	
+
+			<div class="volume">
+				<div class="sound" title="Mute/Unmute sound"></div>
+				<span class="volumeCover" title="Set volume"></span>
+				<span class="volumeBar"></span>
+			</div>
+		</div>
+		
+	</div>
+	<div class="loading"></div>
+</div>
+
+</section>
+ 
+</body>
+</html>

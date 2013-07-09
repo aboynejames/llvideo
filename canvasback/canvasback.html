@@ -1,0 +1,75 @@
+<html><head>
+<title>Slow Motion Video with HTML5 CANVAS Demo</title> 
+<style>
+#v,#c {float:left;}
+</style></head>
+
+<body>
+<h1>HTML5 canvas slow motion</h1>
+<p>analysis tools coming soon</p>
+<br><br>
+
+<video autoplay="" loop="" controls="" id="v"> 
+	<source src="../playback/swimview.mp4" type="video/mp4" />
+		<source src="../playback/swimview.ogg" type="video/ogg" />
+</video>
+<canvas id="c" width="640" height="360"></canvas>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function(){
+	var v = document.getElementById('v');
+	var canvas = document.getElementById('c');
+	var context = canvas.getContext('2d');
+	var back = document.createElement('canvas');
+	var backcontext = back.getContext('2d');
+ 
+	var cw,ch;
+ 
+	v.addEventListener('play', function(){
+		cw = v.clientWidth;
+		ch = v.clientHeight;
+		canvas.width = cw;
+		canvas.height = ch;
+		back.width = cw;
+		back.height = ch;
+		var queue = [];
+		draw(v,context,backcontext,cw,ch,queue);
+		slow(v,context,backcontext,cw,ch,queue);
+	},false);
+ 
+},false);
+ 
+function draw(v,c,bc,w,h,queue) {
+	if(v.paused || v.ended)	return false;
+
+	// First, draw it into the backing canvas
+	bc.drawImage(v,0,0,w,h);
+
+	// Grab the pixel data from the backing canvas
+	var idata = bc.getImageData(0,0,w,h);
+
+	//put video frame data into queue array
+	queue.push(idata);
+	
+	// Start over!
+	setTimeout(draw,20,v,c,bc,w,h,queue);
+}
+
+function slow(v,c,bc,w,h,queue) {
+	if(v.paused || v.ended)	return false;
+
+	//pull and remove first element from queue array
+	next = queue.shift();
+
+	//Draw the pixels onto the visible canvas
+	c.putImageData(next,0,0);
+
+	//loop and play in slow motion
+	setTimeout(slow,800,v,c,bc,w,h,queue);
+}
+
+
+</script>
+
+</body></html>
